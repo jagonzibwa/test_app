@@ -9,8 +9,6 @@ import 'chats_screen.dart';
 import 'profile_screen.dart';
 import 'create_post_screen.dart';
 
-/// Holds the four primary tabs in an IndexedStack so each tab keeps its
-/// scroll position and state when you switch away and back.
 class MainShell extends StatefulWidget {
   const MainShell({super.key});
 
@@ -37,94 +35,52 @@ class _MainShellState extends State<MainShell> {
 
   @override
   Widget build(BuildContext context) {
+    final unread = context.watch<AppState>().totalUnread;
     return Scaffold(
       body: IndexedStack(index: _index, children: _pages),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.gold,
-        foregroundColor: AppColors.goldInk,
+        backgroundColor: AppColors.emerald,
+        foregroundColor: AppColors.onEmerald,
         elevation: 2,
         shape: const CircleBorder(),
         onPressed: _openCreate,
-        child: const Icon(Icons.add, size: 30),
+        child: const Icon(Icons.add, size: 26),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: _BottomBar(
-        index: _index,
-        onTap: (i) => setState(() => _index = i),
-      ),
-    );
-  }
-}
-
-class _BottomBar extends StatelessWidget {
-  final int index;
-  final ValueChanged<int> onTap;
-  const _BottomBar({required this.index, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    final unread = context.watch<AppState>().totalUnread;
-    return BottomAppBar(
-      color: AppColors.surface,
-      shape: const CircularNotchedRectangle(),
-      notchMargin: 8,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _item(Icons.home_rounded, 'Home', 0),
-          _item(Icons.search_rounded, 'Explore', 1),
-          const SizedBox(width: 40),
-          _item(Icons.chat_bubble_rounded, 'Chats', 2, badge: unread),
-          _item(Icons.person_rounded, 'Profile', 3),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _index,
+        onDestinationSelected: (i) => setState(() => _index = i),
+        destinations: [
+          const NavigationDestination(
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home_rounded),
+            label: 'Home',
+          ),
+          const NavigationDestination(
+            icon: Icon(Icons.search_outlined),
+            selectedIcon: Icon(Icons.search_rounded),
+            label: 'Explore',
+          ),
+          NavigationDestination(
+            icon: unread > 0
+                ? Badge.count(
+                    count: unread,
+                    child: const Icon(Icons.chat_bubble_outline_rounded),
+                  )
+                : const Icon(Icons.chat_bubble_outline_rounded),
+            selectedIcon: unread > 0
+                ? Badge.count(
+                    count: unread,
+                    child: const Icon(Icons.chat_bubble_rounded),
+                  )
+                : const Icon(Icons.chat_bubble_rounded),
+            label: 'Chats',
+          ),
+          const NavigationDestination(
+            icon: Icon(Icons.person_outline_rounded),
+            selectedIcon: Icon(Icons.person_rounded),
+            label: 'Profile',
+          ),
         ],
-      ),
-    );
-  }
-
-  Widget _item(IconData icon, String label, int i, {int badge = 0}) {
-    final active = index == i;
-    final color = active ? AppColors.gold : AppColors.textSecondary;
-    return InkWell(
-      onTap: () => onTap(i),
-      borderRadius: BorderRadius.circular(12),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Icon(icon, color: color, size: 24),
-                if (badge > 0)
-                  Positioned(
-                    right: -6,
-                    top: -4,
-                    child: Container(
-                      padding: const EdgeInsets.all(3),
-                      constraints:
-                          const BoxConstraints(minWidth: 16, minHeight: 16),
-                      decoration: const BoxDecoration(
-                          color: AppColors.gold, shape: BoxShape.circle),
-                      child: Text('$badge',
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              color: AppColors.goldInk,
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold)),
-                    ),
-                  ),
-              ],
-            ),
-            const SizedBox(height: 2),
-            Text(label,
-                style: TextStyle(
-                    color: color,
-                    fontSize: 11,
-                    fontWeight:
-                        active ? FontWeight.w600 : FontWeight.w400)),
-          ],
-        ),
       ),
     );
   }

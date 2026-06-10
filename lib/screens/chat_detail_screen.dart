@@ -91,8 +91,8 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
 
   Widget _bubble(Message m) {
     final align = m.isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start;
-    final bubbleColor = m.isMe ? AppColors.gold : AppColors.surface;
-    final textColor = m.isMe ? AppColors.goldInk : AppColors.textPrimary;
+    final bubbleColor = m.isMe ? AppColors.emerald : AppColors.surface;
+    final textColor = m.isMe ? AppColors.onEmerald : AppColors.textPrimary;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 14),
@@ -137,7 +137,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                                   fontWeight: FontWeight.w600)),
                           Text(m.attachmentSize ?? '',
                               style: TextStyle(
-                                  color: textColor.withOpacity(0.7),
+                                  color: textColor.withValues(alpha: 0.7),
                                   fontSize: 11)),
                         ],
                       ),
@@ -189,8 +189,8 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
               width: 48,
               height: 48,
               decoration: const BoxDecoration(
-                  color: AppColors.gold, shape: BoxShape.circle),
-              child: const Icon(Icons.send, color: AppColors.goldInk),
+                  color: AppColors.emerald, shape: BoxShape.circle),
+              child: const Icon(Icons.send, color: AppColors.onEmerald),
             ),
           ),
         ],

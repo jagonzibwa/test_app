@@ -88,7 +88,7 @@ class EventDetailScreen extends StatelessWidget {
                         if (!isOpportunity)
                           Row(children: [
                             const Icon(Icons.group,
-                                size: 18, color: AppColors.gold),
+                                size: 18, color: AppColors.emerald),
                             const SizedBox(width: 8),
                             Text(
                                 '${state.displayedGoing(post)} going  \u2022  ${state.displayedInterested(post)} interested',
@@ -134,7 +134,7 @@ class EventDetailScreen extends StatelessWidget {
 
   Widget _infoRow(IconData icon, String text) {
     return Row(children: [
-      Icon(icon, size: 18, color: AppColors.gold),
+      Icon(icon, size: 18, color: AppColors.emerald),
       const SizedBox(width: 10),
       Expanded(child: Text(text, style: const TextStyle(fontSize: 14))),
     ]);

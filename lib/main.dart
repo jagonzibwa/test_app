@@ -20,7 +20,7 @@ class ALUConnectApp extends StatelessWidget {
       child: MaterialApp(
         title: 'ALU Intercampus Connect',
         debugShowCheckedModeBanner: false,
-        theme: AppTheme.dark,
+        theme: AppTheme.light,
         home: const AuthGate(),
       ),
     );

@@ -92,7 +92,7 @@ class _CategoryRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const cats = [
-      _Cat('All', Icons.grid_view_rounded, AppColors.gold),
+      _Cat('All', Icons.grid_view_rounded, AppColors.emerald),
       _Cat('Events', Icons.event, AppColors.purple),
       _Cat('Opportunities', Icons.verified, AppColors.blue),
       _Cat('Clubs', Icons.diversity_3, AppColors.green),
@@ -143,7 +143,7 @@ class _CategoryButton extends StatelessWidget {
               width: 52,
               height: 52,
               decoration: BoxDecoration(
-                  color: cat.color.withOpacity(0.18),
+                  color: cat.color.withValues(alpha: 0.18),
                   borderRadius: BorderRadius.circular(16)),
               child: Icon(cat.icon, color: cat.color),
             ),

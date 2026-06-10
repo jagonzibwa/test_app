@@ -13,123 +13,93 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28),
+          padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Column(
             children: [
-              const Spacer(flex: 2),
+              const Spacer(flex: 3),
               Container(
-                width: 76,
-                height: 76,
+                width: 72,
+                height: 72,
                 decoration: BoxDecoration(
-                    color: AppColors.gold,
-                    borderRadius: BorderRadius.circular(18)),
+                  color: AppColors.emerald,
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 child: const Icon(Icons.hub,
-                    color: AppColors.goldInk, size: 42),
+                    color: AppColors.onEmerald, size: 38),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 24),
               const Text.rich(
                 TextSpan(children: [
                   TextSpan(
-                      text: 'ALU Intercampus\n',
-                      style: TextStyle(
-                          fontSize: 26,
-                          fontWeight: FontWeight.w800,
-                          color: AppColors.textPrimary)),
+                    text: 'ALU Intercampus\n',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
                   TextSpan(
-                      text: 'Connect',
-                      style: TextStyle(
-                          fontSize: 26,
-                          fontWeight: FontWeight.w800,
-                          color: AppColors.gold)),
+                    text: 'Connect',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.emerald,
+                    ),
+                  ),
                 ]),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 12),
-              const Text('Connect. Collaborate. Lead together.',
-                  style: TextStyle(color: AppColors.textSecondary)),
-              const Spacer(flex: 2),
+              const SizedBox(height: 10),
+              const Text(
+                'Connect. Collaborate. Lead together.',
+                style: TextStyle(
+                    color: AppColors.textSecondary, fontSize: 14),
+                textAlign: TextAlign.center,
+              ),
+              const Spacer(flex: 3),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton.icon(
+                child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    backgroundColor: AppColors.emerald,
+                    foregroundColor: AppColors.onEmerald,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    elevation: 0,
                   ),
                   onPressed: state.login,
-                  icon: const Icon(Icons.account_circle, size: 20),
-                  label: const Text('Sign in with ALU Account',
-                      style: TextStyle(fontWeight: FontWeight.w700)),
+                  child: const Text(
+                    'Sign in with ALU Account',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700, fontSize: 15),
+                  ),
                 ),
               ),
-              const SizedBox(height: 22),
-              Row(
-                children: const [
-                  Expanded(child: Divider(color: AppColors.border)),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: Text('or continue with',
-                        style: TextStyle(
-                            color: AppColors.textSecondary, fontSize: 13)),
-                  ),
-                  Expanded(child: Divider(color: AppColors.border)),
-                ],
-              ),
-              const SizedBox(height: 18),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _social(Icons.g_mobiledata, 'Google', state.login),
-                  const SizedBox(width: 18),
-                  _social(Icons.apple, 'Apple', state.login),
-                ],
-              ),
-              const Spacer(flex: 2),
+              const SizedBox(height: 20),
               GestureDetector(
                 onTap: state.login,
                 child: const Text.rich(
                   TextSpan(children: [
                     TextSpan(
-                        text: 'New here? ',
-                        style: TextStyle(color: AppColors.textSecondary)),
+                      text: 'New here? ',
+                      style: TextStyle(color: AppColors.textSecondary),
+                    ),
                     TextSpan(
-                        text: 'Create account',
-                        style: TextStyle(
-                            color: AppColors.gold,
-                            fontWeight: FontWeight.w700)),
+                      text: 'Create account',
+                      style: TextStyle(
+                        color: AppColors.emerald,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
                   ]),
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 40),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _social(IconData icon, String label, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Column(
-        children: [
-          Container(
-            width: 64,
-            height: 64,
-            decoration: BoxDecoration(
-              color: AppColors.surfaceAlt,
-              borderRadius: BorderRadius.circular(18),
-              border: Border.all(color: AppColors.border),
-            ),
-            child: Icon(icon, size: 34),
-          ),
-          const SizedBox(height: 6),
-          Text(label,
-              style: const TextStyle(
-                  color: AppColors.textSecondary, fontSize: 13)),
-        ],
       ),
     );
   }

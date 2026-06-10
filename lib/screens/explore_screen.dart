@@ -45,7 +45,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       style: TextStyle(
                           fontSize: 26, fontWeight: FontWeight.w800)),
                   Icon(Icons.notifications_none_rounded,
-                      color: AppColors.gold),
+                      color: AppColors.emerald),
                 ],
               ),
               const SizedBox(height: 16),
@@ -73,10 +73,10 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     selected: active,
                     onSelected: (_) => setState(() => _filter = f),
                     backgroundColor: AppColors.surfaceAlt,
-                    selectedColor: AppColors.gold,
+                    selectedColor: AppColors.emerald,
                     labelStyle: TextStyle(
                         color: active
-                            ? AppColors.goldInk
+                            ? AppColors.onEmerald
                             : AppColors.textSecondary,
                         fontWeight: FontWeight.w600),
                     shape: RoundedRectangleBorder(

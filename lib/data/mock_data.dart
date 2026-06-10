@@ -7,7 +7,7 @@ class MockData {
   static const currentUser = AppUser(
     name: 'Aline Umuhoza',
     campus: 'Kigali Campus',
-    color: AppColors.gold,
+    color: AppColors.emerald,
     events: 23,
     communities: 5,
     connections: 87,
@@ -101,7 +101,7 @@ class MockData {
           location: 'Kigali Campus \u2022 Lab 3',
           category: 'Tech',
           tags: ['Tech', 'Workshop'],
-          coverGradient: [AppColors.gold, AppColors.pink],
+          coverGradient: [AppColors.emerald, AppColors.pink],
           goingCount: 18,
           interestedCount: 27,
         ),
@@ -154,7 +154,7 @@ class MockData {
             id: 'c1',
             name: 'ALU Debate Society',
             members: 124,
-            color: AppColors.gold),
+            color: AppColors.emerald),
         Community(
             id: 'c2',
             name: 'Entrepreneurship Club',
@@ -267,7 +267,7 @@ class MockData {
           name: 'ALU Debate Society',
           isGroup: true,
           membersCount: 124,
-          color: AppColors.gold,
+          color: AppColors.emerald,
           lastMessagePreview: 'Emmanuel: Great job!',
           time: '2d ago',
           messages: const [

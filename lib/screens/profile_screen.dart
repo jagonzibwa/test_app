@@ -89,7 +89,7 @@ class ProfileScreen extends StatelessWidget {
             style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w800,
-                color: AppColors.gold)),
+                color: AppColors.emerald)),
         Text(label,
             style:
                 const TextStyle(color: AppColors.textSecondary, fontSize: 13)),
@@ -103,13 +103,17 @@ class ProfileScreen extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
           color: AppColors.surface, borderRadius: BorderRadius.circular(14)),
-      child: ListTile(
-        leading: Icon(icon, color: AppColors.gold),
-        title: Text(label,
-            style: const TextStyle(fontWeight: FontWeight.w600)),
-        trailing: const Icon(Icons.chevron_right,
-            color: AppColors.textSecondary),
-        onTap: onTap,
+      clipBehavior: Clip.antiAlias,
+      child: Material(
+        color: Colors.transparent,
+        child: ListTile(
+          leading: Icon(icon, color: AppColors.emerald),
+          title: Text(label,
+              style: const TextStyle(fontWeight: FontWeight.w600)),
+          trailing: const Icon(Icons.chevron_right,
+              color: AppColors.textSecondary),
+          onTap: onTap,
+        ),
       ),
     );
   }

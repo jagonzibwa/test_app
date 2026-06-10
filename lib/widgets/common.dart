@@ -21,9 +21,9 @@ Color categoryColor(String category) {
       return AppColors.pink;
     case 'startup':
     case 'pitch':
-      return AppColors.gold;
+      return AppColors.emerald;
     default:
-      return AppColors.gold;
+      return AppColors.emerald;
   }
 }
 
@@ -41,7 +41,7 @@ class Avatar extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: color.withOpacity(0.22),
+        color: color.withValues(alpha: 0.22),
         shape: BoxShape.circle,
         border: Border.all(color: color, width: 1.4),
       ),
@@ -86,7 +86,7 @@ class GradientCover extends StatelessWidget {
       ),
       child: Center(
         child: Icon(icon,
-            color: Colors.white.withOpacity(0.85), size: height * 0.32),
+            color: Colors.white.withValues(alpha: 0.85), size: height * 0.32),
       ),
     );
   }
@@ -102,7 +102,7 @@ class PillTag extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.18),
+        color: color.withValues(alpha: 0.18),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
@@ -131,7 +131,7 @@ class SectionHeader extends StatelessWidget {
             onTap: onSeeAll,
             child: const Text('See all',
                 style: TextStyle(
-                    color: AppColors.gold, fontWeight: FontWeight.w600)),
+                    color: AppColors.emerald, fontWeight: FontWeight.w600)),
           ),
       ],
     );
@@ -151,8 +151,8 @@ class GoldButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.gold,
-          foregroundColor: AppColors.goldInk,
+          backgroundColor: AppColors.emerald,
+          foregroundColor: AppColors.onEmerald,
           padding: const EdgeInsets.symmetric(vertical: 15),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
@@ -161,6 +161,7 @@ class GoldButton extends StatelessWidget {
         onPressed: onTap,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             if (icon != null) ...[
               Icon(icon, size: 18),
@@ -184,7 +185,7 @@ class OutlineButton2 extends StatelessWidget {
       {super.key,
       required this.label,
       required this.onTap,
-      this.color = AppColors.gold});
+      this.color = AppColors.emerald});
 
   @override
   Widget build(BuildContext context) {
@@ -246,14 +247,14 @@ class SegmentedToggle extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
-            color: active ? AppColors.gold : Colors.transparent,
+            color: active ? AppColors.emerald : Colors.transparent,
             borderRadius: BorderRadius.circular(10),
           ),
           alignment: Alignment.center,
           child: Text(
             label,
             style: TextStyle(
-              color: active ? AppColors.goldInk : AppColors.textSecondary,
+              color: active ? AppColors.onEmerald : AppColors.textSecondary,
               fontWeight: FontWeight.w700,
             ),
           ),
