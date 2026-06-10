@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:alu_connect/main.dart';
+import 'package:camp_connect/main.dart';
 
 void main() {
   testWidgets('App renders login screen on first launch',
       (WidgetTester tester) async {
-    await tester.pumpWidget(const ALUConnectApp());
+    await tester.pumpWidget(const CampConnectApp());
     await tester.pumpAndSettle();
 
     // Not logged in by default — login screen should be visible.
@@ -16,7 +16,7 @@ void main() {
 
   testWidgets('Sign in navigates to home screen',
       (WidgetTester tester) async {
-    await tester.pumpWidget(const ALUConnectApp());
+    await tester.pumpWidget(const CampConnectApp());
     await tester.pumpAndSettle();
 
     await tester.tap(find.text('Sign in with ALU Account'));

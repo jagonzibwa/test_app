@@ -1,5 +1,5 @@
-name: alu_connect
-description: ALU Intercampus Connect - a mobile-first student engagement & collaboration platform.
+name: camp_connect
+description: Camp Connect - a mobile-first student engagement & collaboration platform.
 publish_to: 'none'
 version: 1.0.0+1
 

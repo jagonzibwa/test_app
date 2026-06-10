@@ -7,18 +7,18 @@ import 'screens/login_screen.dart';
 import 'screens/main_shell.dart';
 
 void main() {
-  runApp(const ALUConnectApp());
+  runApp(const CampConnectApp());
 }
 
-class ALUConnectApp extends StatelessWidget {
-  const ALUConnectApp({super.key});
+class CampConnectApp extends StatelessWidget {
+  const CampConnectApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => AppState(),
       child: MaterialApp(
-        title: 'ALU Intercampus Connect',
+        title: 'Camp Connect',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.light,
         home: const AuthGate(),
