@@ -117,4 +117,22 @@ class AppUser {
     this.communities = 0,
     this.connections = 0,
   });
+
+  AppUser copyWith({
+    String? name,
+    String? campus,
+    Color? color,
+    int? events,
+    int? communities,
+    int? connections,
+  }) {
+    return AppUser(
+      name: name ?? this.name,
+      campus: campus ?? this.campus,
+      color: color ?? this.color,
+      events: events ?? this.events,
+      communities: communities ?? this.communities,
+      connections: connections ?? this.connections,
+    );
+  }
 }

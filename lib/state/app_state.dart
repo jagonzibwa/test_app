@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import '../data/mock_data.dart';
 import '../models/models.dart';
@@ -47,8 +47,42 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  void signUp(String name) {
+    currentUser = currentUser.copyWith(name: name);
+    isLoggedIn = true;
+    notifyListeners();
+  }
+
   void logout() {
     isLoggedIn = false;
+    notifyListeners();
+  }
+
+  // ---- Profile ----
+  void updateProfile(String name, String campus) {
+    currentUser = currentUser.copyWith(name: name, campus: campus);
+    notifyListeners();
+  }
+
+  // ---- New chat ----
+  void startNewChat(String name, Color color) {
+    _chats.insert(
+      0,
+      ChatThread(
+        id: 'ch${DateTime.now().millisecondsSinceEpoch}',
+        name: name,
+        color: color,
+        isGroup: false,
+        lastMessagePreview: 'Say hello!',
+        time: 'Now',
+      ),
+    );
+    notifyListeners();
+  }
+
+  // ---- Communities ----
+  void addCommunity(Community community) {
+    _communities.add(community);
     notifyListeners();
   }
 

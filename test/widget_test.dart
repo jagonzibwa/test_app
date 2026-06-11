@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:camp_connect/main.dart';
@@ -8,10 +9,9 @@ void main() {
     await tester.pumpWidget(const CampConnectApp());
     await tester.pumpAndSettle();
 
-    // Not logged in by default — login screen should be visible.
-    // "Sign in with ALU Account" is a plain Text inside the ElevatedButton.
-    expect(find.text('Sign in with ALU Account'), findsOneWidget);
-    expect(find.text('Connect. Collaborate. Lead together.'), findsOneWidget);
+    expect(find.text('Welcome Back'), findsOneWidget);
+    expect(find.text('Connect. Collaborate. Lead together.'),
+        findsOneWidget);
   });
 
   testWidgets('Sign in navigates to home screen',
@@ -19,10 +19,13 @@ void main() {
     await tester.pumpWidget(const CampConnectApp());
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('Sign in with ALU Account'));
+    await tester.enterText(
+        find.byType(TextField).at(0), 'test@alu.edu');
+    await tester.enterText(
+        find.byType(TextField).at(1), 'password123');
+    await tester.tap(find.text('Sign In'));
     await tester.pumpAndSettle();
 
-    // After login the bottom NavigationBar labels should appear.
     expect(find.text('Explore'), findsOneWidget);
     expect(find.text('Chats'), findsOneWidget);
   });
