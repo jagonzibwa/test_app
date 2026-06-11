@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../state/app_state.dart';
 import '../theme/app_theme.dart';
 import 'home_screen.dart';
+import 'feed_screen.dart';
 import 'explore_screen.dart';
 import 'chats_screen.dart';
 import 'profile_screen.dart';
@@ -21,6 +22,7 @@ class _MainShellState extends State<MainShell> {
 
   final _pages = const [
     HomeScreen(),
+    FeedScreen(),
     ExploreScreen(),
     ChatsScreen(),
     ProfileScreen(),
@@ -54,6 +56,11 @@ class _MainShellState extends State<MainShell> {
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home_rounded),
             label: 'Home',
+          ),
+          const NavigationDestination(
+            icon: Icon(Icons.dynamic_feed_outlined),
+            selectedIcon: Icon(Icons.dynamic_feed_rounded),
+            label: 'Feed',
           ),
           const NavigationDestination(
             icon: Icon(Icons.search_outlined),

@@ -17,11 +17,13 @@ class AppState extends ChangeNotifier {
   final List<Post> _posts = MockData.posts();
   final List<Community> _communities = MockData.communities();
   final List<ChatThread> _chats = MockData.chats();
+  final List<FeedEntry> _feedEntries = MockData.feedEntries();
   final Set<String> _going = {..._seededGoing};
   final Set<String> _interested = {..._seededInterested};
 
   // ---- Read-only views ----
   List<Post> get posts => List.unmodifiable(_posts);
+  List<FeedEntry> get feedEntries => List.unmodifiable(_feedEntries);
   List<Post> get featured => _posts.where((p) => p.featured).toList();
   List<Post> get events =>
       _posts.where((p) => p.type == PostType.event).toList();
@@ -117,6 +119,36 @@ class AppState extends ChangeNotifier {
   // ---- Posting ----
   void addPost(Post post) {
     _posts.insert(0, post);
+    notifyListeners();
+  }
+
+  // ---- Feed ----
+  void addFeedEntry(FeedEntry entry) {
+    _feedEntries.insert(0, entry);
+    notifyListeners();
+  }
+
+  void toggleFeedLike(String id) {
+    final entry = _feedEntries.firstWhere((e) => e.id == id);
+    if (entry.likedByMe) {
+      entry.likedByMe = false;
+      entry.likes -= 1;
+    } else {
+      entry.likedByMe = true;
+      entry.likes += 1;
+    }
+    notifyListeners();
+  }
+
+  void addFeedComment(String feedId, String text) {
+    final entry = _feedEntries.firstWhere((e) => e.id == feedId);
+    entry.comments.add(FeedComment(
+      id: 'fc${DateTime.now().millisecondsSinceEpoch}',
+      authorName: currentUser.name,
+      authorColor: currentUser.color,
+      text: text,
+      timeAgo: 'Just now',
+    ));
     notifyListeners();
   }
 
